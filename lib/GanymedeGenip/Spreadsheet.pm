@@ -30,6 +30,17 @@ sub getCellValue {
   my $self    = shift;
   my $loc     = shift;
 
+  my($col,$row) = $loc =~/^([a-zA-Z]+)(\d+)$/;
+
+  # validate
+  unless((exists $self->validRows->{$row}) && (exists $self->validColumns->{uc($col)})) {
+    die "$col$row invalid cell";
+  }
+
+  return (exists $self->_grid->{$row}{$col})
+    ? $self->_grid->{$row}{$col}
+    : 0;
+
 }
 
 
