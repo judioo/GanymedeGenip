@@ -19,8 +19,11 @@ sub display {
 
   return '' if($self->value =~/^0$/);
 
-  return $self->value;
-
+  return ($self->value =~ /^[-+]{0,1}\d+(?:[\.]\d+){0,1}$/)
+    ? (int($self->value)  == $self->value)
+      ? sprintf("%.1f",$self->value)
+      : $self->value
+    : $self->value;
 }
 
 no Moose;
