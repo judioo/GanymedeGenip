@@ -50,6 +50,14 @@ sub populate {
 
 }
 
+sub displayCell {
+  my $self    = shift;
+  my $loc     = shift;
+  my $cell    = $self->_getCell($loc);
+
+  return ($cell) ? $cell->display : "";
+}
+
 sub _getCell {
   my $self    = shift;
   my $cell    = shift;
