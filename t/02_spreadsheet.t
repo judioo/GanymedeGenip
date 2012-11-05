@@ -28,6 +28,17 @@ use_ok($CLASS);
   is($spreadsheet->rows, 20, "rows 20");
   is($spreadsheet->columns, 28, "columns 28");
 
+  # illegal 0 values for rows and column
+  eval {$spreadsheet    = $CLASS->new(rows => 0, columns => 1)};
+  like($@,qr/invalid/i,"invalid rows value of 0");
 
+  eval {$spreadsheet    = $CLASS->new(rows => 1, columns => 0)};
+  like($@,qr/invalid/i,"invalid cols value of 0");
+
+  eval {$spreadsheet    = $CLASS->new(rows => -1, columns => 1)};
+  like($@,qr/invalid/i,"invalid rows value of -1");
+
+  eval {$spreadsheet    = $CLASS->new(rows => 1, columns => -1)};
+  like($@,qr/invalid/i,"invalid cols value of -1");
 }
 
