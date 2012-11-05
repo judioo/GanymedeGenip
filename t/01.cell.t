@@ -59,6 +59,9 @@ our $CLASS  = 'GanymedeGenip::Cell';
 
   $cell->value(21.123);
   cmp_ok($cell->display, 'eq', '21.123',"float returned for float value");
+
+  $cell->value('Stringfellows');
+  cmp_ok($cell->display, 'eq', 'Stringfellows',"string returned for string value");
 }
 
 done_testing();
