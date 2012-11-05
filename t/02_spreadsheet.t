@@ -54,6 +54,10 @@ use_ok($CLASS);
   $spreadsheet->populate( cell => 'A1', value => 20);
   # as the real test we want to prove is this
   cmp_ok($spreadsheet->getCellValue('A1'), 'eq', '20', "cell populated");
+
+  # clear cell
+  $spreadsheet->populate( cell => 'A1', value => "");
+  is($spreadsheet->getCellValue('A1'), 0, "cell cleared");
 }
 
 done_testing();
