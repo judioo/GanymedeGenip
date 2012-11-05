@@ -55,3 +55,5 @@ use_ok($CLASS);
   # as the real test we want to prove is this
   cmp_ok($spreadsheet->getCellValue('A1'), 'eq', '20', "cell populated");
 }
+
+done_testing();

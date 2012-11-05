@@ -1,6 +1,7 @@
 package GanymedeGenip::Spreadsheet;
 
 use Moose;
+use GanymedeGenip::Cell;
 
 use constant DEFAULT_ROWS_SIZE  => 10;
 use constant DEFAULT_COLS_SIZE  => 10;
@@ -35,7 +36,18 @@ sub getCellValue {
 }
 
 sub populate {
-  my $self    = shift;
+  my $self        = shift;
+  my %args        = @_;
+  my($col, $row)  = $self->_getRowColFromCellName($args{cell});
+
+  if(exists $self->_grid->{$row} && exists $self->_grid->{$row}{$col}) {
+    # cell already exist
+    $self->_grid->{$row}{$col}->value($args{value});
+  }
+  else {
+    $self->_grid->{$row}{$col} = GanymedeGenip::Cell->new(value => $args{value});
+  }
+
 }
 
 sub _getCell {
