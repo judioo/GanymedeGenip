@@ -58,6 +58,27 @@ sub displayCell {
   return ($cell) ? $cell->display : "";
 }
 
+sub display {
+  my $self    = shift;
+  my %args    = @_;
+  my $format  = "%10s";
+  my $method  = ($args{raw_values}) 
+                ? 'getCellValue' : 'displayCell';
+
+  my $ss;
+
+  map{ $ss .= sprintf $format, $_ } ('',(sort(keys %{$self->validColumns})), "\n");
+
+  for my $row (sort{$a <=> $b} (keys %{$self->validRows})) {
+    $ss .= sprintf $format, $row;
+    for my $col (sort(keys %{$self->validColumns})) {
+      $ss .= sprintf $format, $self->$method("$col$row");
+    }
+    $ss .="\n";
+  }
+  return $ss;
+}
+
 sub _getCell {
   my $self    = shift;
   my $cell    = shift;
