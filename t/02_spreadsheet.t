@@ -23,6 +23,10 @@ use_ok($CLASS);
   is($spreadsheet->columns,
     GanymedeGenip::Spreadsheet::DEFAULT_ROWS_SIZE(), "default columns");
 
+  # New with attributes
+  $spreadsheet  = $CLASS->new(rows => 20, columns => 28);
+  is($spreadsheet->rows, 20, "rows 20");
+  is($spreadsheet->columns, 28, "columns 28");
 
 
 }
