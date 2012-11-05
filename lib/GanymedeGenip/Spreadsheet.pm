@@ -1,4 +1,4 @@
-package GanymedeGenip;
+package GanymedeGenip::Spreadsheet;
 
 use strict;
 use warnings;
