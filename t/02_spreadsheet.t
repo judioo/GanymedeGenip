@@ -17,5 +17,13 @@ use_ok($CLASS);
 {
   my $spreadsheet = $CLASS->new;
   isa_ok($spreadsheet,$CLASS);
+
+  is($spreadsheet->rows,
+    GanymedeGenip::Spreadsheet::DEFAULT_ROWS_SIZE(), "default rows");
+  is($spreadsheet->columns,
+    GanymedeGenip::Spreadsheet::DEFAULT_ROWS_SIZE(), "default columns");
+
+
+
 }
 
