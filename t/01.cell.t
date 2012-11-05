@@ -24,6 +24,14 @@ our $CLASS  = 'GanymedeGenip::Cell';
 {
   my $cell  = $CLASS->new(value =>10);
   is($cell->value,10,"cell value is 10");
+
+  # create empty cell
+  $cell     = $CLASS->new;
+  cmp_ok($cell->value, 'eq', '0',"cell is empty (has value of 0)");
+
+  # populate
+  $cell->value(20);
+  is($cell->value, 20,"cell populated");
 }
 
 done_testing();
