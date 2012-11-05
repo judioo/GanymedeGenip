@@ -12,6 +12,7 @@ use constant DEFAULT_COLS_SIZE  => 10;
                 => ( is => 'rw', isa => 'HashRef[Str]', default => sub{{}});
   has 'validRows'  
                 => ( is => 'rw', isa => 'HashRef[Str]', default => sub{{}});
+  has '_grid'   => ( is => 'rw', isa => 'HashRef[Str]', default => sub{{}});
 
 sub BUILD {
   my $self  = shift;
