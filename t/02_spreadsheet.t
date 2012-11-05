@@ -45,5 +45,13 @@ use_ok($CLASS);
 # populate
 # populate cells in spreadsheet
 {
+  my $spreadsheet = $CLASS->new; # default 10 10 grid
 
+  # as getCellValue is a product of our 'populate' test we need to test it 1st
+  # this is one of those TDD breakers...
+  cmp_ok($spreadsheet->getCellValue('A1'), 'eq', '', "cell empty");
+
+  $spreadsheet->populate( cell => 'A1', value => 20);
+  # as the real test we want to prove is this
+  cmp_ok($spreadsheet->getCellValue('A1'), 'eq', '20', "cell populated");
 }
