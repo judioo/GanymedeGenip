@@ -43,6 +43,10 @@ sub getCellValue {
 
 }
 
+sub populate {
+  my $self    = shift;
+}
+
 
 sub _create_indexes {
   my $self    = shift;
