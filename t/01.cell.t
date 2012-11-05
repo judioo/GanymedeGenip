@@ -56,6 +56,9 @@ our $CLASS  = 'GanymedeGenip::Cell';
 
   $cell->value(40);
   cmp_ok($cell->display, 'eq', '40.0',"float returned for integer value");
+
+  $cell->value(21.123);
+  cmp_ok($cell->display, 'eq', '21.123',"float returned for float value");
 }
 
 done_testing();
