@@ -50,7 +50,7 @@ use_ok($CLASS);
   # as getCellValue is a product of our 'populate' test we need to test it 1st
   # this is one of those TDD breakers...
   cmp_ok($spreadsheet->getCellValue('A1'), '==', 0, "cell empty");
-exit;
+
   $spreadsheet->populate( cell => 'A1', value => 20);
   # as the real test we want to prove is this
   cmp_ok($spreadsheet->getCellValue('A1'), 'eq', '20', "cell populated");
