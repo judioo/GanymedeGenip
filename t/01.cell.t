@@ -36,6 +36,10 @@ our $CLASS  = 'GanymedeGenip::Cell';
   # emptying
   $cell->value("");
   cmp_ok($cell->value, 'eq', '0',"populated cell emptied (has value of 0)");
+  
+  # re-populate
+  $cell->value(30);
+  cmp_ok($cell->value, 'eq', '30',"re-populated cell");
 }
 
 done_testing();
