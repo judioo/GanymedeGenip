@@ -60,4 +60,12 @@ use_ok($CLASS);
   is($spreadsheet->getCellValue('A1'), 0, "cell cleared");
 }
 
+# display
+# display a cell in the spreadsheet
+{
+  my $spreadsheet = $CLASS->new( cell => 'A1', value => 20 );
+  $spreadsheet->populate( cell => 'A1', value => '20' );
+  cmp_ok($spreadsheet->displayCell('A1'), 'eq', '20.0', "cell displays correctly");
+}
+ 
 done_testing();
