@@ -32,6 +32,10 @@ our $CLASS  = 'GanymedeGenip::Cell';
   # populate
   $cell->value(20);
   is($cell->value, 20,"cell populated");
+
+  # emptying
+  $cell->value("");
+  cmp_ok($cell->value, 'eq', '0',"populated cell emptied (has value of 0)");
 }
 
 done_testing();
