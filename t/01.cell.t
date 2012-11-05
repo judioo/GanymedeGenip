@@ -40,6 +40,10 @@ our $CLASS  = 'GanymedeGenip::Cell';
   # re-populate
   $cell->value(30);
   cmp_ok($cell->value, 'eq', '30',"re-populated cell");
+
+  # string population
+  $cell->value("NAME");
+  cmp_ok($cell->value, 'eq', 'NAME',"re-populated cell with string");
 }
 
 done_testing();
