@@ -68,4 +68,31 @@ use_ok($CLASS);
   cmp_ok($spreadsheet->displayCell('A1'), 'eq', '20.0', "cell displays correctly");
 }
  
+# display spreadsheet
+# provide method to see spreadsheet grid 
+# provide option to see raw_values :)
+{
+  my $spreadsheet         = $CLASS->new( rows => 2, columns =>2 );
+  my $empty_spreadsheet   = $spreadsheet->display;
+  
+  # populate
+  $spreadsheet->populate(cell => 'A1', value => 'SUM');
+  $spreadsheet->populate(cell => 'A2', value => '10');
+  $spreadsheet->populate(cell => 'B1', value => 'TOTAL');
+  $spreadsheet->populate(cell => 'B2', value => '77.34');
+
+  my $value_spreadsheet   =  $spreadsheet->display(raw_values=>1);
+  my $display_spreadsheet =  $spreadsheet->display;
+
+  # not what I would do in a real world test but it works
+  like($value_spreadsheet, qr/10[^\.]/, "'value' correctly displayed");
+  like($display_spreadsheet, qr/10\./, "'display' correctly displayed");
+
+  # to see explains run prove in verbose
+  # prove -v t/02_spreadsheet.t
+  explain "empty spreadsheet\n".$empty_spreadsheet;
+  explain "'display' spreadsheet\n". $display_spreadsheet;
+  explain "'value' spreadsheet\n". $value_spreadsheet;
+}
+
 done_testing();
