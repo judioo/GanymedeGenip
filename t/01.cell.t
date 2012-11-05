@@ -64,7 +64,12 @@ our $CLASS  = 'GanymedeGenip::Cell';
   cmp_ok($cell->display, 'eq', 'Stringfellows',"string returned for string value");
 
   $cell->value(-56);
-  cmp_ok($cell->display, 'eq', '-56.0',"negitive float returned for negitive integer value");
+  cmp_ok($cell->display, 'eq', '-56.0',"-tive float returned for -tive integer value");
+
+  $cell->value(12e2);
+  cmp_ok($cell->display, '==', 12e2, "exponent float returned for exponent value");
+  cmp_ok($cell->display, 'eq', '1200.0', "convertion of exponent value");
+
 }
 
 done_testing();
