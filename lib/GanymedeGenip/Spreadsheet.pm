@@ -29,24 +29,38 @@ sub BUILD {
 sub getCellValue {
   my $self    = shift;
   my $loc     = shift;
+  my $cell    = $self->_getCell($loc);
 
-  my($col,$row) = $loc =~/^([a-zA-Z]+)(\d+)$/;
-
-  # validate
-  unless((exists $self->validRows->{$row}) && (exists $self->validColumns->{uc($col)})) {
-    die "$col$row invalid cell";
-  }
-
-  return (exists $self->_grid->{$row}{$col})
-    ? $self->_grid->{$row}{$col}
-    : 0;
-
+  return ($cell) ? $cell->value : 0;
 }
 
 sub populate {
   my $self    = shift;
 }
 
+sub _getCell {
+  my $self    = shift;
+  my $cell    = shift;
+
+  my($col, $row)  = $self->_getRowColFromCellName($cell);
+
+  return (exists $self->_grid->{$row}{$col})
+    ? $self->_grid->{$row}{$col}
+    : undef;
+}
+
+sub _getRowColFromCellName {
+  my $self    = shift;
+  my $cell    = shift;
+
+  my($col,$row) = $cell =~/^([a-zA-Z]+)(\d+)$/;
+
+  # validate
+  if((exists $self->validRows->{$row}) && (exists $self->validColumns->{uc($col)})) {
+    return(uc($col), $row);
+  }
+  die "$col$row invalid cell";
+}
 
 sub _create_indexes {
   my $self    = shift;
