@@ -17,6 +17,12 @@ sub BUILD {
   }
 }
 
+sub getCellValue {
+  my $self    = shift;
+  my $loc     = shift;
+
+}
+
 no Moose;
 __PACKAGE__->meta->make_immutable;
 1;
