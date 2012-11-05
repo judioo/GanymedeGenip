@@ -11,4 +11,9 @@ use lib "$Bin/../lib";
 our $CLASS ='GanymedeGenip::Spreadsheet';
 use_ok($CLASS);
 
+# New
+{
+  my $spreadsheet = $CLASS->new;
+  isa_ok($spreadsheet,$CLASS);
+}
 
