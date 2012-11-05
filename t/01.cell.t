@@ -62,6 +62,9 @@ our $CLASS  = 'GanymedeGenip::Cell';
 
   $cell->value('Stringfellows');
   cmp_ok($cell->display, 'eq', 'Stringfellows',"string returned for string value");
+
+  $cell->value(-56);
+  cmp_ok($cell->display, 'eq', '-56.0',"negitive float returned for negitive integer value");
 }
 
 done_testing();
