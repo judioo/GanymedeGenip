@@ -46,4 +46,13 @@ our $CLASS  = 'GanymedeGenip::Cell';
   cmp_ok($cell->value, 'eq', 'NAME',"re-populated cell with string");
 }
 
+# display
+# while cell->value returns the raw value of the cell
+# cell-display will return the formatted version (i.e return Int's 
+# as floats etc)
+{
+  my $cell    = $CLASS->new;
+  cmp_ok($cell->display, 'eq','',"empty cell displayed as ''");
+}
+
 done_testing();

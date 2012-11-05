@@ -14,6 +14,14 @@ use Moose;
     $self->$orig(@_);
   };
 
+sub display {
+  my $self    = shift;
+
+  return '' if($self->value =~/^0$/);
+
+  return $self->value;
+
+}
 
 no Moose;
 __PACKAGE__->meta->make_immutable;
